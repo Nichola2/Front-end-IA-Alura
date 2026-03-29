@@ -1,0 +1,401 @@
+
+/* ========================================================
+   NETFLIX STYLE SHEET - Estilo da seleção de perfis
+   - Arquivo responsivo e acessível para tela de entrada
+   - Comentários em cada bloco para facilitar entendimento
+   ======================================================== */
+
+/* Reset e configurações globais */
+* {
+  box-sizing: border-box; /* Inclui padding e border na largura/altura total dos elementos */
+}
+
+/* Variáveis globais de tema */
+:root {
+  --bg: #ffffff; /* Fundo para modo claro */
+  --text: #141414; /* Texto para modo claro */
+  --surface: #f2f2f2; /* Superfícies e cards */
+  --accent: #e50914; /* Cor de destaque Netflix */
+  --border: #cccccc; /* Borda sutil para componentes */
+}
+
+/* Tema escuro */
+body.dark {
+  --bg: #141414; /* Fundo escuro */
+  --text: #ffffff; /* Texto branco */
+  --surface: #1a1a1a; /* Superfície escura */
+  --accent: #eff; /* Cor de destaque Netflix */
+  --border: #333333; /* Borda escura */
+}
+
+/* Estilos do corpo da página */
+body {
+  margin: 0; /* Remove margens padrão do navegador */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Define fonte moderna similar à Netflix */
+  color: var(--text); /* Cor do texto variável */
+  background: var(--bg); /* Fundo variável */
+  min-height: 100vh; /* Garante altura mínima de 100% da viewport */
+}
+
+main {
+  display: flex; /* Usa flexbox para layout */
+  flex-direction: column; /* Organiza elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Altura mínima de 100% da viewport para centralização */
+}
+
+h1 {
+  font-size: clamp(2.5rem); /* Tamanho responsivo: mínimo 2.5rem, ajusta automaticamente */
+  font-weight: bold; /* Peso da fonte em negrito */
+  letter-spacing: 1px; /* Espaçamento entre letras para elegância */
+  margin-bottom: 2rem; /* Espaço inferior de 2rem */
+}
+
+/* Botão de alternância de tema (toggle visual) */
+.theme-toggle {
+  width: 60px; /* Largura do switch */
+  height: 34px; /* Altura do switch */
+  border-radius: 999px; /* Formato arredondado */
+  border: 1px solid var(--border); /* Borda sutil */
+  background: var(--surface); /* Fundo do botão */
+  cursor: pointer;
+  position: fixed; /* Posicionamento fixo na tela */
+  top: 20px; /* Distância do topo */
+  right: 20px; /* Distância da direita */
+  z-index: 1000; /* Coloca acima de outros elementos */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-toggle__thumb {
+  width: 26px;
+  height: 26px;
+  background: var(--text); /* Bolinha do toggle */
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle[aria-pressed="true"] {
+  background: var(--accent); /* Fundo quando modo dark ativo */
+  border-color: var(--accent);
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__thumb {
+  transform: translate(26px, -50%); /* Thumb no lado direito */
+  background: #fff;
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Seção principal da página */
+main {
+  display: flex; /* Usa flexbox para layout */
+  flex-direction: column; /* Organiza elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Altura mínima de 100% da viewport para centralização */
+}
+
+/* Título principal */
+h1 {
+  font-size: clamp(2.5rem); /* Tamanho responsivo: mínimo 2.5rem, ajusta automaticamente */
+  font-weight: bold; /* Peso da fonte em negrito */
+  letter-spacing: 1px; /* Espaçamento entre letras para elegância */
+  margin-bottom: 2rem; /* Espaço inferior de 2rem */
+}
+
+/* Seção dos perfis */
+section[aria-label="Perfis disponíveis"] {
+  width: 100%; /* Largura total do container pai */
+  max-width: 600px; /* Largura máxima para controle responsivo */
+  display: flex; /* Usa flexbox */
+  justify-content: center; /* Centraliza conteúdo horizontalmente */
+}
+
+/* Navegação dos perfis */
+nav.profiles {
+  display: flex; /* Layout flexível */
+  gap: 2rem; /* Espaço de 2rem entre itens */
+}
+
+/* Estilo base dos itens da lista de perfis */
+.profile-item {
+  list-style: none; /* Remove marcador de lista */
+  padding: 0; /* Remove padding padrão */
+  margin: 0; /* Remove margin padrão */
+}
+
+/* Lista não ordenada de perfis */
+ul.profiles {
+  display: flex; /* Layout flexível */
+  list-style: none; /* Remove marcadores de lista */
+  padding: 0; /* Remove padding padrão */
+  margin: 0; /* Remove margin padrão */
+  gap: 2rem; /* Espaço de 2rem entre itens */
+}
+
+/* Estilo base dos perfis */
+.profile {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: var(--text); /* Cor do texto variável conforme o tema */
+}
+
+/* Efeito hover nos perfis */
+.profile:hover {
+  transform: scale(1.08); /* Aumenta ligeiramente o tamanho no hover */
+}
+
+/* Container das imagens e legendas */
+figure {
+  margin: 0; /* Remove margens padrão */
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Organiza em coluna */
+  align-items: center; /* Centraliza itens */
+}
+
+/* Estilo das imagens dos perfis */
+img {
+  width: 120px; /* Largura fixa de 120px */
+  height: 120px; /* Altura fixa de 120px */
+  border-radius: 8px; /* Bordas arredondadas */
+  object-fit: cover; /* Mantém proporção cortando se necessário */
+  margin-bottom: 0.5rem; /* Espaço inferior */
+  background: #222; /* Fundo escuro para imagens que não carregam */
+}
+
+/* Efeito hover nas imagens */
+img:hover {
+  border: 2px solid var(--accent); /* Adiciona borda com cor de destaque Netflix */
+}
+
+/* Legendas das imagens */
+figcaption {
+  font-size: 1.1rem; /* Tamanho da fonte */
+  font-weight: 500; /* Peso médio da fonte */
+  margin-top: 0.5rem; /* Espaço superior */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+
+section.gerenciar {
+  margin-top: 3rem; /* Espaço acima da seção de gerenciamento */
+  text-align: center; /* Centraliza o texto dentro da seção */
+  
+
+}
+
+/* ========================================
+   RESPONSIVIDADE - MEDIA QUERIES
+   ======================================== */
+
+/* ----------------------------------------
+   Mobile Extra Pequeno (até 320px)
+   Ajusta layout para telas muito pequenas (smartphones antigos)
+   ---------------------------------------- */
+@media (max-width: 320px) {
+  main {
+    padding: 1rem; /* Ajusta padding para não somar espaços na tela pequena */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Reduz tamanho do título em telas muito pequenas */
+    margin-bottom: 1.5rem; /* Diminui espaçamento entre título e lista */
+  }
+
+  ul.profiles {
+    flex-wrap: wrap; /* Permite quebrar a linha para comportar mais perfis */
+    gap: 1rem; /* Espaçamento menor entre perfis */
+    justify-content: center; /* Mantém perfis centralizados */
+  }
+
+  img {
+    width: 80px; /* Reduz largura da imagem para se adaptar à tela */
+    height: 80px; /* Reduz altura da imagem para se adaptar à tela */
+  }
+
+  figcaption {
+    font-size: 0.85rem; /* Texto menor para ajustar em tela estreita */
+  }
+}
+
+/* ----------------------------------------
+   Mobile Pequeno (321px a 480px)
+   Ajustes para smartphones modernos com tela pequena
+   ---------------------------------------- */
+@media (min-width: 321px) and (max-width: 480px) {
+  main {
+    padding: 1rem; /* Padding compacto para espaço vertical suficiente */
+  }
+
+  h1 {
+    font-size: 1.75rem; /* Tamanho do título um pouco maior que no extra pequeno */
+    margin-bottom: 1.5rem; /* Espaço confortável entre título e perfis */
+  }
+
+  ul.profiles {
+    flex-wrap: wrap; /* Quebra em linha para encaixar conteúdos onde necessário */
+    gap: 1.5rem; /* Gap intermediário entre itens */
+    justify-content: center; /* Centraliza a lista de perfis */
+  }
+
+  img {
+    width: 90px; /* Ajuste moderado de tamanho de imagem */
+    height: 90px; /* Ajuste moderado de tamanho de imagem */
+  }
+
+  figcaption {
+    font-size: 0.9rem; /* Texto das legendas ligeiramente maior */
+  }
+
+  .profile:hover {
+    transform: scale(1.05); /* Hover mais sutil em telas pequenas */
+  }
+}
+
+/* ----------------------------------------
+   Mobile Grande (481px a 768px)
+   Ajustes para smartphones largos e phablets
+   ---------------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  main {
+    padding: 2rem; /* Mais padding, pois há mais espaço vertical */
+  }
+
+  h1 {
+    font-size: 2rem; /* Título ainda maior para melhor leitura */
+    margin-bottom: 2rem; /* Aumenta espaçamento abaixo do título */
+  }
+
+  section[aria-label="Perfis disponíveis"] {
+    max-width: 400px; /* Contém os perfis em área adequada */
+  }
+
+  ul.profiles {
+    gap: 1.5rem; /* Gap equilibrado para perfis com mais espaço */
+  }
+
+  img {
+    width: 100px; /* Largura ajustada para telas maiores */
+    height: 100px; /* Altura ajustada para telas maiores */
+  }
+
+  figcaption {
+    font-size: 1rem; /* Legenda com tamanho médio/confortável */
+  }
+
+  .profile:hover {
+    transform: scale(1.06); /* Hover levemente mais intenso */
+  }
+}
+
+/* ----------------------------------------
+   Tablet (769px a 1024px)
+   Ajustes para tablets e telas de 2-in-1
+   ---------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    padding: 2rem; /* Mantém padding amplo para telas de tablet */
+  }
+
+  h1 {
+    font-size: 2.25rem; /* Maior para boa leitura em tablet */
+    margin-bottom: 2.5rem; /* Espaçamento confortável */
+  }
+
+  section[aria-label="Perfis disponíveis"] {
+    max-width: 550px; /* Área de perfis maior que em mobile */
+  }
+
+  ul.profiles {
+    gap: 1.8rem; /* Gap proporcional ao tamanho da tela */
+  }
+
+  img {
+    width: 110px; /* Imagem maior e mais legível */
+    height: 110px; /* Imagem maior e mais legível */
+  }
+
+  figcaption {
+    font-size: 1.05rem; /* Legenda com texto um pouco maior */
+  }
+
+  .profile:hover {
+    transform: scale(1.07); /* Hover mais suave para interfaces táteis */
+  }
+}
+
+/* ----------------------------------------
+   Desktop Grande (acima de 1025px)
+   Ajustes para telas grandes de desktop/laptops
+   ---------------------------------------- */
+@media (min-width: 1025px) {
+  main {
+    padding: 2rem; /* Layout espaçado para área de tela maior */
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsivo baseado em viewport */
+    margin-bottom: 2rem; /* Espaço entre título e grid de perfis */
+  }
+
+  section[aria-label="Perfis disponíveis"] {
+    max-width: 700px; /* Limite de largura para não esticar demais */
+  }
+
+  ul.profiles {
+    gap: 2.5rem; /* Mais espaço entre perfis em desktop */
+  }
+
+  img {
+    width: 130px; /* Imagens maiores para boa visualização */
+    height: 130px; /* Imagens maiores para boa visualização */
+  }
+
+  figcaption {
+    font-size: 1.15rem; /* Texto da legenda maior para desktop */
+  }
+
+  .profile:hover {
+    transform: scale(1.08); /* Zoom suave no hover */
+  }
+}
+
+/* ----------------------------------------
+   Orientação Paisagem em Dispositivos Pequenos
+   Garante que layout funcione em landscape reduzindo alturas
+   ---------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  main {
+    min-height: auto; /* Remove altura mínima para caber em orientação paisagem */
+    padding: 1rem; /* Ajusta padding para altura limitada */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Reduz tamanho do título para caber na altura limitada */
+    margin-bottom: 1rem; /* Menos espaço inferior devido ao menor vertical disponível */
+  }
+
+  ul.profiles {
+    gap: 1.5rem; /* Espaçamento reduzido entre perfis */
+  }
+
+  img {
+    width: 80px; /* Imagens menores para caber no espaço reduzido */
+    height: 80px; /* Imagens menores para caber no espaço reduzido */
+  }
+
+  figcaption {
+    font-size: 0.9rem; /* Legendas menores para melhor scalabilidade */
+  }
+}
