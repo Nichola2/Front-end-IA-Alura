@@ -187,12 +187,28 @@ figcaption {
   letter-spacing: 0.5px; /* Espaçamento entre letras */
 }
 
-
-section.gerenciar {
-  margin-top: 3rem; /* Espaço acima da seção de gerenciamento */
-  text-align: center; /* Centraliza o texto dentro da seção */
+.gerenciar {
+  margin-top: 20px; /* Espaço acima da seção de gerenciamento */
   
+}
 
+.botao-gerenciar {
+  background: transparent;
+  border: 1px solid grey;
+  color: grey;
+  padding: 10px 30px;
+  font-size: 1vw;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-weight: 200;
+  transition: all 0.3s;
+}
+
+.botao-gerenciar:hover  {
+  border-color: #e5e5e5;
+  color: #e5e5e5;
+  
 }
 
 /* ========================================
